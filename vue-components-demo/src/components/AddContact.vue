@@ -1,6 +1,6 @@
 <template>
     <div class="container border rounded p-2">
-        <div class="text-center text-white"> Add new Contact</div>
+        <div class="text-center text-white mb-2"> Add new Contact</div>
         <form @submit.prevent="addContact()">
             <div class="row">
                 <div class="col-4">
@@ -28,7 +28,7 @@
                         placeholder="Phone"  
                     />
                 </div>
-                <div class="col-6 offset-3 p-2">
+                <div class="col-6 offset-3 p-2 mt-2">
                     <button 
                         type="submit" 
                         class="btn btn-secondary w-100"
@@ -49,8 +49,14 @@ const contact = reactive({
     phone: '',
 });
 
+const props = defineProps({
+    onAddContact: {
+        type: Function,
+        required: true,
+    },
+});
 function addContact() {
-    emit('add-contact', {
+    props.onAddContact({
         name: contact.name,
         email: contact.email,
         phone: contact.phone,

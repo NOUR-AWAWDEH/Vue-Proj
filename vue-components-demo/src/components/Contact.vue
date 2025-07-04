@@ -14,11 +14,17 @@
                     {{ isFavorite ? "Remove from": "Add to" }} Favorite
                 </button>
 
-                  <button 
-                        type="delete" 
-                        class="btn btn-danger w-100"
-                        @click="onDeleteContact()">Delete Contact
-                 </button>
+                <div class="col-12 mt-2">
+                    <button 
+                            type="delete" 
+                            class="btn btn-danger w-100"
+                            @click="onDeleteContact()">Delete Contact
+                    </button>
+                </div>
+                <div class="col-12 mt-2">
+                    <LuckyNumber
+                        :maxNumber="maxLuckyNumber"/>
+                </div>
             </div> 
         </div>    
         <span class="float-end small" v-if="ownerName != ''">
@@ -27,6 +33,8 @@
     </div>
 </template>
 <script setup>
+import LuckyNumber from './LuckyNumber.vue';
+
 
 const props = defineProps({
     name: {
